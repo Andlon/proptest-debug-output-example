@@ -5,12 +5,6 @@ use std::collections::BTreeMap;
 
 #[derive(Debug, Clone)]
 #[allow(dead_code)]
-pub struct PhoneNumber {
-    internal_rep: String,
-}
-
-#[derive(Debug, Clone)]
-#[allow(dead_code)]
 pub struct Person {
     first_name: String,
     last_name: String,
