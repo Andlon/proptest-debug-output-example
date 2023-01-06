@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 
-use std::collections::BTreeMap;
 use proptest::prelude::*;
+use std::collections::BTreeMap;
 
 #[derive(Debug, Clone)]
 #[allow(dead_code)]
@@ -38,10 +38,11 @@ pub fn example_phonebook() -> Phonebook {
             first_name: "Santa".to_string(),
             last_name: "Claus".to_string(),
             age: 1751,
-        }
-    ].map(|person| (person.last_name.clone(), person))
-        .into_iter()
-        .collect();
+        },
+    ]
+    .map(|person| (person.last_name.clone(), person))
+    .into_iter()
+    .collect();
     Phonebook {
         last_name_to_person_map: map,
     }
