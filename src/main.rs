@@ -44,7 +44,7 @@ pub fn example_directory() -> PersonDirectory {
 
 proptest! {
     #[test]
-    fn deliberately_fail_test(_person in Just(example_directory())) {
+    fn deliberately_fail_test(_directory in Just(example_directory())) {
         prop_assert!(false);
     }
 }
