@@ -12,11 +12,11 @@ pub struct Person {
 }
 
 #[derive(Debug, Clone)]
-pub struct Phonebook {
+pub struct PersonDirectory {
     last_name_to_person_map: BTreeMap<String, Person>,
 }
 
-pub fn example_phonebook() -> Phonebook {
+pub fn example_directory() -> PersonDirectory {
     let map = [
         Person {
             first_name: "Mick".to_string(),
@@ -37,14 +37,14 @@ pub fn example_phonebook() -> Phonebook {
     .map(|person| (person.last_name.clone(), person))
     .into_iter()
     .collect();
-    Phonebook {
+    PersonDirectory {
         last_name_to_person_map: map,
     }
 }
 
 proptest! {
     #[test]
-    fn deliberately_fail_test(_person in Just(example_phonebook())) {
+    fn deliberately_fail_test(_person in Just(example_directory())) {
         prop_assert!(false);
     }
 }
