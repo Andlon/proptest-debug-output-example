@@ -1,0 +1,8 @@
+[package]
+name = "proptest-debug-output-example"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+#proptest = { git = "https://github.com/Andlon/proptest.git", branch="pretty-print-minimal-input" }
+proptest = "1.0.0"

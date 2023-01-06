@@ -1,0 +1,59 @@
+#![allow(dead_code)]
+
+use std::collections::BTreeMap;
+use proptest::prelude::*;
+
+#[derive(Debug, Clone)]
+#[allow(dead_code)]
+pub struct PhoneNumber {
+    internal_rep: String,
+}
+
+#[derive(Debug, Clone)]
+#[allow(dead_code)]
+pub struct Person {
+    first_name: String,
+    last_name: String,
+    age: usize,
+}
+
+#[derive(Debug, Clone)]
+pub struct Phonebook {
+    last_name_to_person_map: BTreeMap<String, Person>,
+}
+
+pub fn example_phonebook() -> Phonebook {
+    let map = [
+        Person {
+            first_name: "Mick".to_string(),
+            last_name: "Jagger".to_string(),
+            age: 79,
+        },
+        Person {
+            first_name: "Charles".to_string(),
+            last_name: "Darwin".to_string(),
+            age: 213,
+        },
+        Person {
+            first_name: "Santa".to_string(),
+            last_name: "Claus".to_string(),
+            age: 1751,
+        }
+    ].map(|person| (person.last_name.clone(), person))
+        .into_iter()
+        .collect();
+    Phonebook {
+        last_name_to_person_map: map,
+    }
+}
+
+proptest! {
+    #[test]
+    fn deliberately_fail_test(_person in Just(example_phonebook())) {
+        prop_assert!(false);
+    }
+}
+
+fn main() {
+    println!("Hello, world!");
+}
